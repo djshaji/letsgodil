@@ -44,10 +44,10 @@ include "anneli/header.php" ;
           <i class="fas fa-bell"></i>
           <span class="badge rounded-pill bg-primary">2</span>
         </button>
-        <button class="btn m-1 btn-success col-2">
+        <a class="btn m-1 btn-success col-2" href="/messages.php">
           <i class="fas fa-comment-dots"></i>
           <span class="badge rounded-pill bg-success">1</span>
-        </button>
+        </a>
         <button class="btn m-1 btn-info col-2" data-bs-toggle="modal" data-bs-target="#colors">
           <i class="fas fa-cog"></i>
         </button>
