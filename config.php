@@ -1,5 +1,9 @@
 <?php
 $config = array (
+    "dir"=> "/mnt/data/djshaji/Projects/letsgodil",
+    "database" => "mysql:host=localhost;dbname=letsgodil;charset=utf8mb4",
+    "database_user" => "letsgodil",
+    "database_pass" => "iloveshajikhan",
     "codename" => "Let's Go, Dil!",
     "description" => "Where do you want to go today?",
     "header" => true,
