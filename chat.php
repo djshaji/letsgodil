@@ -9,6 +9,10 @@ include "anneli/header.php" ;
 include "anneli/db.php" ;
 $to = "OmAUIf45WFbgzeDAY340j8Qa2R22";
 echo "<script>const to = '$to'</script>";
+
+$sql = "SELECT * from chat where (uid = '$uid' and sender = '$to') or (sender = '$uid' and uid = '$to') order by stamp DESC" ;
+$data = sql_exec ($sql, false);
+$sender = $auth -> getUser ($to) ;
 ?>
 
 <script src="chat.js?<?php echo time () ;?>"></script>
@@ -17,13 +21,33 @@ echo "<script>const to = '$to'</script>";
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 alert bg-info h3 shadow mt-3">
-        <i class="fas fa-user-circle"></i>
-        User
+        <?php
+          if ($sender -> {"photoUrl"} != null)
+            printf ("<img src='%s' width='32'>", $sender -> {"photoUrl"} ) ;
+          else
+            echo "<i class=\"fas fa-user-circle\"></i>";
+        ?>
+        <?php echo $sender -> {"email"} ;?>
       </div>
       <div class="col-md-8 list-group mt-0 p-3 pt-0" id="mcontainer">
-        <a href="#" class="active btn-lg card list-group-item list-group-item-action">Hi&nbsp;<sup class="badge text-muted bg-secondary m-1" style="opacity:80%;font-size:60%">11:30 pm</sup></a>
+        <?php
+          foreach ($data as $d) {
+            if ($d ['uid'] == $uid) {
+              $class = "active btn-lg card list-group-item list-group-item-action";
+              $badge = "badge text-muted bg-secondary m-1";
+            } else {
+              $class = "text-end btn-lg list-group-item list-group-item-action";
+              $badge = "badge text-white bg-primary m-1";
+            }
+
+            $message = $d ['message'];
+            $time = date ("F j, y g:i a", $d ['stamp']);
+            echo "<a href='#' class='text-end btn-lg list-group-item list-group-item-action'>$message&nbsp;<sup class='badge text-white bg-primary m-1' style='opacity:80%;font-size:60%'>$time</sup></a>";
+          }
+        ?>
+        <!-- <a href="#" class="active btn-lg card list-group-item list-group-item-action">Hi&nbsp;<sup class="badge text-muted bg-secondary m-1" style="opacity:80%;font-size:60%">11:30 pm</sup></a>
         <a href="#" class="text-end btn-lg list-group-item list-group-item-action">Hello&nbsp;<sup class="badge text-white bg-primary m-1" style="opacity:80%;font-size:60%">11:32 pm</sup></a>
-        <a href="#" class="list-group-item btn-lg card list-group-item-action active">Mera Lund Choosogi&nbsp;<sup class="badge text-muted bg-secondary m-1" style="opacity:80%;font-size:60%">11:40 pm</sup></a>
+        <a href="#" class="list-group-item btn-lg card list-group-item-action active">How are you&nbsp;<sup class="badge text-muted bg-secondary m-1" style="opacity:80%;font-size:60%">11:40 pm</sup></a> -->
       </div>
 
       <div class="col-md-6 card shadow m-3 border border-primary">
