@@ -7,10 +7,11 @@ $config ['logo'] = 'anneli/assets/img/logow.png';
 // $config ['header'] = false;
 include "anneli/header.php" ;
 include "anneli/db.php" ;
-$to = "OmAUIf45WFbgzeDAY340j8Qa2R22";
+// $to = "OmAUIf45WFbgzeDAY340j8Qa2R22";
+$to = $_GET ['to'];
 echo "<script>const to = '$to'</script>";
 
-$sql = "SELECT * from chat where (uid = '$uid' and sender = '$to') or (sender = '$uid' and uid = '$to') order by stamp DESC" ;
+$sql = "SELECT * from chat where (uid = '$uid' and sender = '$to') or (sender = '$uid' and uid = '$to') order by stamp ASC" ;
 $data = sql_exec ($sql, false);
 $sender = $auth -> getUser ($to) ;
 ?>
@@ -32,7 +33,8 @@ $sender = $auth -> getUser ($to) ;
       <div class="col-md-8 list-group mt-0 p-3 pt-0" id="mcontainer">
         <?php
           foreach ($data as $d) {
-            if ($d ['uid'] == $uid) {
+            // echo $uid, ' ', $d ['uid'];
+            if ($d ['uid'] != $uid) {
               $class = "active btn-lg card list-group-item list-group-item-action";
               $badge = "badge text-muted bg-secondary m-1";
             } else {
@@ -42,7 +44,7 @@ $sender = $auth -> getUser ($to) ;
 
             $message = $d ['message'];
             $time = date ("F j, y g:i a", $d ['stamp']);
-            echo "<a href='#' class='text-end btn-lg list-group-item list-group-item-action'>$message&nbsp;<sup class='badge text-white bg-primary m-1' style='opacity:80%;font-size:60%'>$time</sup></a>";
+            echo "<a href='#' class='$class'>$message&nbsp;<sup class='$badge' style='opacity:80%;font-size:60%'>$time</sup></a>";
           }
         ?>
         <!-- <a href="#" class="active btn-lg card list-group-item list-group-item-action">Hi&nbsp;<sup class="badge text-muted bg-secondary m-1" style="opacity:80%;font-size:60%">11:30 pm</sup></a>
