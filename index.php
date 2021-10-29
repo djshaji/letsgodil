@@ -44,7 +44,7 @@ include "anneli/header.php" ;
           <i class="fas fa-bell"></i>
           <span class="badge rounded-pill bg-primary">2</span>
         </button>
-        <a class="btn m-1 btn-success col-2" href="/messages.php">
+        <a class="btn m-1 btn-success col-2" href="/anneli/messages.php">
           <i class="fas fa-comment-dots"></i>
           <span class="badge rounded-pill bg-success">1</span>
         </a>

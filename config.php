@@ -10,7 +10,15 @@ $config = array (
     "header-bg" => "primary",
     "footer" => true,
     "footer-bg" => "text-white bg-primary ",
-    "logo" => "/anneli/assets/img/logow.png"
+    "logo" => "/anneli/assets/img/logow.png",
+    "drawer-auth" => array (
+      "Messages"=> "/anneli/messages",
+      "Media"=> "/media",
+      "Contacts"=> "/contacts",
+    ),
+    "drawer" => array (
+      "About"=> "/about"
+    )
   );
   
   
