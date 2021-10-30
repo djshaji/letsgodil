@@ -11,6 +11,7 @@ $config ['footer-bg'] = 'text-danger';
 $config ['logo'] = 'anneli/assets/img/logo.png';
 $config ['header'] = false;
 include "anneli/header.php" ;
+include "anneli/db.php" ;
 // var_dump ($uid);
 ?>
 
@@ -46,7 +47,7 @@ include "anneli/header.php" ;
         </button>
         <a class="btn m-1 btn-success col-2" href="/anneli/messages.php">
           <i class="fas fa-comment-dots"></i>
-          <span class="badge rounded-pill bg-success">1</span>
+          <span class="badge rounded-pill bg-success"><?php echo messages_get_unread () ;?></span>
         </a>
         <button class="btn m-1 btn-info col-2" data-bs-toggle="modal" data-bs-target="#colors">
           <i class="fas fa-cog"></i>
