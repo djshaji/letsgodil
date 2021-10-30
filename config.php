@@ -6,6 +6,9 @@ $config = array (
     "database_pass" => "iloveshajikhan",
     "codename" => "Let's Go, Dil!",
     "description" => "Where do you want to go today?",
+    "skin" => "materia",
+    "theme" => "red_blue",
+    "font"=> "Montserrat",
     "header" => true,
     "header-bg" => "primary",
     "footer" => true,
@@ -17,7 +20,7 @@ $config = array (
       "Contacts"=> "/contacts",
     ),
     "drawer" => array (
-      "About"=> "/about"
+      "About"=> "/anneli/about"
     )
   );
   
