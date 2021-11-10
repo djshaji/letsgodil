@@ -16,6 +16,7 @@ $config = array (
     "logo" => "/anneli/assets/img/logow.png",
     "drawer-auth" => array (
       "Messages"=> "/anneli/messages",
+      "Issue Tracker"=> "/anneli/tracker",
       "Media"=> "/media",
       "Contacts"=> "/contacts",
     ),
